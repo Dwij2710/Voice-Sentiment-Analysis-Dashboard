@@ -46,19 +46,20 @@
    - Go to [render.com](https://render.com)
    - Sign up with GitHub
 
-3. **Create Web Service**
-   - Click "New +" → "Web Service"
-   - Connect your GitHub repository
-   - Settings:
-     - **Name**: voice-sentiment-app
-     - **Environment**: Python 3
-     - **Build Command**: `pip install -r requirements.txt`
-     - **Start Command**: `gunicorn app:app`
-   - Click "Create Web Service"
+3. **Create Web Service (The Easy Way)**
+   - Go to [dashboard.render.com](https://dashboard.render.com)
+   - Click "New +" → "**Blueprint**"
+   - Connect your GitHub repository `Voice-Sentiment-Analysis-Dashboard`
+   - Render will automatically detect the `render.yaml` file.
+   - Click "Apply" to start the deployment.
 
 4. **Wait for Deployment**
-   - First deployment takes 5-10 minutes
-   - You'll get a URL like: `https://voice-sentiment-app.onrender.com`
+   - It will take a few minutes to build and install dependencies.
+   - Once finished, you will see a green "Live" badge.
+   - Your URL will be shown at the top (e.g., `https://speech-emotion-monitor-xxxx.onrender.com`).
+
+> [!WARNING]
+> **Free Tier Limits**: Render's free tier has 512MB RAM. If the deployment fails with an "Out of Memory" error, it's because the AI models (Torch/Transformers) are too large. You may need to upgrade to a paid starter plan ($7/mo) or use a smaller model.
 
 ---
 

@@ -1,0 +1,14 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+Flask
+Werkzeug
+gunicorn
+librosa
+numpy
+transformers
+torch
+SpeechRecognition
+pydub
+scipy
+soundfile
+numba
+imageio-ffmpeg

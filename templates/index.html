@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Sentiment Analysis Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎤 Voice Sentiment Analysis Dashboard</h1>
+            <p>Upload an audio file to analyze emotions and sentiment with precise timestamps</p>
+        </header>
+
+        <div class="upload-section">
+            <div class="upload-box">
+                <input type="file" id="audioFile" accept="audio/*" style="display: none;">
+                <label for="audioFile" class="upload-label">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <span>Click to upload audio file</span>
+                    <small>Supports MP3, WAV, M4A, OGG (Max 50MB)</small>
+                </label>
+            </div>
+            <button id="analyzeBtn" class="analyze-btn" disabled>Analyze Audio</button>
+        </div>
+
+        <div id="loadingSection" class="loading-section" style="display: none;">
+            <div class="spinner"></div>
+            <p>Analyzing audio... This may take a minute.</p>
+        </div>
+
+        <div id="resultsSection" class="results-section" style="display: none;">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Duration</h3>
+                    <p id="duration" class="stat-value">-</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Segments Analyzed</h3>
+                    <p id="segments" class="stat-value">-</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Dominant Emotion</h3>
+                    <p id="dominantEmotion" class="stat-value">-</p>
+                </div>
+            </div>
+
+            <div class="charts-section">
+                <div class="chart-container">
+                    <h3>Emotion Distribution</h3>
+                    <canvas id="emotionPieChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Emotion Timeline</h3>
+                    <canvas id="emotionTimelineChart"></canvas>
+                </div>
+            </div>
+
+            <div class="timeline-section">
+                <h3>Detailed Timeline</h3>
+                <div id="timeline" class="timeline"></div>
+            </div>
+
+            <div class="emotion-summary">
+                <h3>Emotion Summary</h3>
+                <div id="emotionSummary" class="summary-grid"></div>
+            </div>
+        </div>
+
+        <div id="errorSection" class="error-section" style="display: none;">
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
